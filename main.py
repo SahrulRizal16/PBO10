@@ -1,22 +1,4 @@
 
-import requests
-
-files = [
-    ('file', ('file', open('tya.pdf', 'rb'), 'application/octet-stream'))
-]
-headers = {
-    'x-api-key': 'sec_xueCk8x2zVgJxAVoEfgSp6oewD8fewft'
-}
-
-response = requests.post(
-    'https://api.chatpdf.com/v1/sources/add-file', headers=headers, files=files)
-
-if response.status_code == 200:
-    print('Source ID:', response.json()['sourceId'])
-else:
-    print('Status:', response.status_code)
-    print('Error:', response.text)
-# src_bBuqnnXqZrUdFdnuAUTsc
 import streamlit as st
 import requests
 
@@ -27,12 +9,12 @@ pesan_pengguna = st.text_input("Pesan Anda")
 
 def panggil_api_chatpdf(pesan):
     headers = {
-        'x-api-key': 'sec_xueCk8x2zVgJxAVoEfgSp6oewD8fewft',  # Pastikan API key Anda benar
+        'x-api-key': st.secrets['code'],  # Pastikan API key Anda benar
         'Content-Type': 'application/json',
     }
     
     data = {
-        'sourceId': "src_bBuqnnXqZrUdFdnuAUTsc",  # Pastikan sourceId Anda benar
+        'sourceId': "src_DyXpC2nCbkMs3L22Le1Dj",  # Pastikan sourceId Anda benar
         'messages': [
             {
                 'role': "user",
